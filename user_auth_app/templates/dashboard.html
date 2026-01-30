@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container dashboard">
+    <h1>Welcome {{ username }}</h1>
+    <h2 style="margin-top: 25px;">Profile Details</h2>
+
+    <div class="profile-item"><span>Name:</span> {{ user[0] }}</div>
+    <div class="profile-item"><span>Email:</span> {{ user[1] }}</div>
+    <div class="profile-item"><span>Phone:</span> {{ user[2] }}</div>
+    <div class="profile-item"><span>Roll No:</span> {{ user[3] }}</div>
+    <div class="profile-item"><span>Address:</span> {{ user[4] }}</div>
+
+    <a class="logout" href="/logout">Logout</a>
+</div>
+
+<div class="grades-section">
+    <h2>Grades</h2>
+
+    {% if grades and grades|length > 0 %}
+        <table class="grades-table">
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Marks</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for g in grades %}
+                <tr>
+                    <td>{{ g[0] }}</td>
+                    <td>{{ g[1] }}</td>
+                    <td>{{ g[2] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No grades available.</p>
+    {% endif %}
+</div>
+
+</body>
+</html>
